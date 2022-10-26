@@ -8,5 +8,6 @@ TextualConfig/src.py
 TextualConfig.egg-info/PKG-INFO
 TextualConfig.egg-info/SOURCES.txt
 TextualConfig.egg-info/dependency_links.txt
+TextualConfig.egg-info/requires.txt
 TextualConfig.egg-info/top_level.txt
 TextualConfig.egg-info/zip-safe
