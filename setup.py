@@ -19,7 +19,7 @@ setup(
     author="RhythmLian",
     url="https://github.com/Rhythmicc/TextualConfig",
     license="MIT",
-    packages=find_packages() + ["Qpro", "textual"],
+    packages=find_packages(),
     include_package_data=True,
     zip_safe=True,
     install_requires=[],
