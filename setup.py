@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-VERSION = '0.0.1'
+VERSION = "0.0.1"
 
 setup(
-    name='TextualConfig',
+    name="TextualConfig",
     version=VERSION,
-    description='< your pypi lib description >',
+    description="A Config Tool with Textual support.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
@@ -15,14 +15,13 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    keywords='< your pypi lib keywords >',
-    author='< your name >',
-    url="< which url to find your lib >",
-    license='MIT',
-    packages=find_packages(),
+    keywords="Textual Config",
+    author="RhythmLian",
+    url="https://github.com/Rhythmicc/TextualConfig",
+    license="MIT",
+    packages=find_packages() + ["Qpro", "textual"],
     include_package_data=True,
     zip_safe=True,
     install_requires=[],
     entry_points={},
 )
-
