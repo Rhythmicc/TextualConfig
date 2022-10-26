@@ -19,6 +19,7 @@ setup(
     author="RhythmLian",
     url="https://github.com/Rhythmicc/TextualConfig",
     license="MIT",
+    python_requires=">=3.8",
     packages=find_packages(),
     package_data={
         "TextualConfig": ["*.py", "*.css"],
