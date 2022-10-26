@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 
 setup(
     name="TextualConfig",
@@ -20,6 +20,9 @@ setup(
     url="https://github.com/Rhythmicc/TextualConfig",
     license="MIT",
     packages=find_packages(),
+    package_data={
+        "TextualConfig": ["*.py", "*.css"],
+    },
     include_package_data=True,
     zip_safe=True,
     install_requires=["Qpro", "textual"],
