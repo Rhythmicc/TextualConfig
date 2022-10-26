@@ -8,6 +8,8 @@ from QuickProject import (
     QproInfoString,
 )
 
+name = "TextualConfig"
+
 
 def requirePackage(
     pname: str,
