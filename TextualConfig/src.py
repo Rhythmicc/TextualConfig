@@ -62,7 +62,7 @@ class Welcome(Container):
         self.app.query_one(".config").scroll_visible(speed=50, top=True)
 
 
-class ConfigForm(Container):
+class ConfigForm(Static):
     def __init__(self, questions, path):
         super().__init__()
         self.questions = questions
@@ -74,14 +74,13 @@ class ConfigForm(Container):
         for question in self.questions:
             _question = self.questions[question]
             if _question["type"] == "Doc":
-                for item in _question["args"]:
-                    yield Static(item)
+                yield TextContent(_question["docs"])
             else:
+                if "docs" in _question and _question["docs"]:
+                    yield TextContent(_question["docs"])
                 yield Static(question, classes="label")
                 widget = requirePackage("textual.widgets", _question["type"], "textual")
-                self.widgets[question] = widget(
-                    *_question["args"], **_question["kwargs"]
-                )
+                self.widgets[question] = widget(**_question["kwargs"])
                 yield self.widgets[question]
         yield Static()
         yield Button("Save" if user_lang != "zh" else "保存", variant="primary")

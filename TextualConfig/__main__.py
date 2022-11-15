@@ -42,14 +42,19 @@ pip3 install cup-network -U
     command_table,
     username={
         "type": "Input",
-        "args": [],
+        "docs": Markdown(
+            """\
+### 用户名
+
+输入你的学号
+"""
+        ),
         "kwargs": {
             "placeholder": "Username",
         },
     },
     password={
         "type": "Input",
-        "args": [],
         "kwargs": {
             "placeholder": "Password",
             "password": True,

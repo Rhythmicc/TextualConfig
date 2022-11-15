@@ -88,7 +88,7 @@ Welcome {
   box-sizing: border-box;
 }
 
-Welcome Button {
+Body Button {
   width: 100%;
   margin-top: 1;
 }
@@ -194,7 +194,12 @@ DataTable {
   height: 16;
 }
 
-ConfigForm {
+MixedConfigForm Button {
+  width: 100%;
+  margin-top: 1;
+}
+
+/* ConfigForm {
   height: auto;
   margin: 1 0;
   padding: 1 2;
@@ -214,7 +219,7 @@ ConfigForm Button {
 ConfigForm .label {
   padding: 1 2;
   text-align: right;
-}
+} */
 
 Message {
   margin: 0 1;
