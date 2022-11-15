@@ -83,16 +83,6 @@ class ConfigForm(Static):
                 self.widgets[question] = widget(**_question["kwargs"])
                 yield self.widgets[question]
         yield Static()
-        yield Button("Save" if user_lang != "zh" else "保存", variant="primary")
-
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        # self.app.query_one(".config").scroll_visible(speed=50, top=True)
-        self.answers = {i: self.widgets[i].value for i in self.widgets}
-        with open(self.path, "w") as f:
-            import json
-
-            json.dump(self.answers, f, indent=4, ensure_ascii=False)
-        self.app.exit()
 
 
 class Config(App):
@@ -106,6 +96,8 @@ class Config(App):
         self.path = path
         self.doc = home_page
         self.questions = kwargs
+        self.forms = ConfigForm(self.questions, self.path)
+        self.answers = {}
 
     def compose(self) -> ComposeResult:
         yield Container(
@@ -119,16 +111,30 @@ class Config(App):
                 Column(
                     Section(
                         SectionTitle("Config" if user_lang != "zh" else "配置"),
-                        ConfigForm(self.questions, self.path),
+                        self.forms,
                     ),
                     classes="config",
                 ),
+                Button("Save" if user_lang != "zh" else "保存", variant="primary"),
             ),
         )
         yield Footer()
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        # self.app.query_one(".config").scroll_visible(speed=50, top=True)
+        self.answers = {i: self.forms.widgets[i].value for i in self.forms.widgets}
+        with open(self.path, "w") as f:
+            import json
+
+            json.dump(self.answers, f, indent=4, ensure_ascii=False)
+        self.app.exit()
 
     def action_open_link(self, link: str) -> None:
         self.app.bell()
         import webbrowser
 
         webbrowser.open(link)
+
+    def run(self):
+        super().run()
+        return self.answers
